@@ -1,9 +1,9 @@
 # paycruiser-api-doc
-API Documentation for PayCruiser
+API Documentation for PayCruiser. To signup with PayCruiser, please go to [https://www.paycruiser.com/sign-up](https://www.paycruiser.com/sign-up)
 
 Base URLS:
   1. Sandbox: `https://sandbox-api.paycruiser.com`
-  2. Live: `https://api.paycruiser.com`
+  2. Live: `please contact us`
 
 # 1. Login
 
