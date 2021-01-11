@@ -103,15 +103,15 @@ Use this endpoint to submit onetime payments. The merchant account receiving fun
 ## Test Cards Information
 Use these following card numbers to test your sandbox integration. P.S: You cannot run live transactions on sandbox environment.
 
-Card Brand	Card Number	Expiry Date	Amount
-Visa	4111111111111111	Any future date	Any amount
-MasterCard (cards that start with "5")	5500000000000004	Any future date	Any amount
-MasterCard (cards that start with "2")	2223000148400010	Any future date	Any amount
-American Express	340000000000009 ***Note: Amex is 15 characters	Any future date	Any amount
-JCB	3566002020140006	Any future date	Any amount
-Discover	6011000000000004	Any future date	Any amount
-Diners Club	36438999960016	Any future date	Any amount
-China Union Pay	6250941006528599	Any future date	Any amount
+| Card Brand       | Card Number      | Expiry Date | Amount (in USD) |
+|------------------|------------------|-------------|-----------------|
+| Visa             | 4111111111111111 | 1229        | 50              |
+| MasterCard       | 5500000000000004 | 1229        | 50              |
+| American Express | 340000000000009  | 1229        | 50              |
+| JCB              | 3566002020140006 | 1229        | 50              |
+| Discover         | 6011000000000004 | 1229        | 50              |
+| Diners Club      | 36438999960016   | 1229        | 50              |
+| China Union Pay  | 6250941006528599 | 1229        | 50              |
 
 
 ## Content Type
