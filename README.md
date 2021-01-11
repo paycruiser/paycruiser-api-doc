@@ -5,9 +5,6 @@ Base URLS:
   1. Sandbox: `https://sandbox-api.paycruiser.com`
   2. Live: `https://api.paycruiser.com`
 
-Base URL: `https://sandbox-api.paycruiser.com`
-Base URL: `https://sandbox-api.paycruiser.com`
-
 # 1. Login
 
 User provides their cellphone number to receive onetime passcode 
