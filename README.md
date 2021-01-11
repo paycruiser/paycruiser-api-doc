@@ -353,18 +353,18 @@ Restricted
 
 You just need to delete the Header token from the device. Without Header Token, user is basically logged out
 
-# Reccuring Payments
+# 8. Reccuring Payments
 
-## Create Customer
+## 8.1 Create Customer
 Todo
 
-## Create/Store Customer Credit Card (for recurring Payments)
+## 8.2 Create/Store Customer Credit Card (for recurring Payments)
 Todo
 
-## Make Recurring Payment
+## 8.3 Make Recurring Payment
 Todo
 
-# Invoicing
+# 9. Invoicing
 Todo
 
 
