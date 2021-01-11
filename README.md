@@ -100,6 +100,20 @@ The rest of the information is irrelevant for the card reader
 
 Use this endpoint to submit onetime payments. The merchant account receiving funds is provided in "merchant_account". 
 
+## Test Cards Information
+Use these following card numbers to test your sandbox integration. P.S: You cannot run live transactions on sandbox environment.
+
+Card Brand	Card Number	Expiry Date	Amount
+Visa	4111111111111111	Any future date	Any amount
+MasterCard (cards that start with "5")	5500000000000004	Any future date	Any amount
+MasterCard (cards that start with "2")	2223000148400010	Any future date	Any amount
+American Express	340000000000009 ***Note: Amex is 15 characters	Any future date	Any amount
+JCB	3566002020140006	Any future date	Any amount
+Discover	6011000000000004	Any future date	Any amount
+Diners Club	36438999960016	Any future date	Any amount
+China Union Pay	6250941006528599	Any future date	Any amount
+
+
 ## Content Type
 application/json
 
@@ -338,3 +352,19 @@ Restricted
 # 7. Log Out
 
 You just need to delete the Header token from the device. Without Header Token, user is basically logged out
+
+# Reccuring Payments
+
+## Create Customer
+Todo
+
+## Create/Store Customer Credit Card (for recurring Payments)
+Todo
+
+## Make Recurring Payment
+Todo
+
+# Invoicing
+Todo
+
+
