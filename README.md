@@ -114,12 +114,6 @@ Use these following card numbers to test your sandbox integration. P.S: You cann
 | China Union Pay  | 6250941006528599 | 1229        | 50              |
 
 
-*Content Type*
-application/json
-
-*Headers*
-Authorization, Value: Token xxxxxxxxxxx
-
 ## Payload
 
 | Attribute        | Type   | Description                                                                                                                                | Is Required            |
