@@ -358,10 +358,10 @@ You just need to delete the Header token from the device. Without Header Token, 
 ## 8.1 Create Customer
 Todo
 
-## 8.2 Create/Store Customer Credit Card (for recurring Payments)
+## 8.2 Create/Save Customer Credit Card (for recurring Payments)
 Todo
 
-## 8.3 Make Recurring Payment
+## 8.3 Make Payment from saved Credit Card
 Todo
 
 # 9. Invoicing
