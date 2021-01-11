@@ -46,7 +46,7 @@ curl --request POST \
 }
 ```
 
-# 2. User Information
+# 2. User (Merchant) Information
 This endpoint returns user information(which will give you the merchant_id information)
 
 ### Request
@@ -361,7 +361,10 @@ Todo
 ## 8.2 Create/Save Customer Credit Card (for recurring Payments)
 Todo
 
-## 8.3 Make Payment from saved Credit Card
+## 8.3 Get Customer Information
+Todo
+
+## 8.4 Make Payment from saved Credit Card
 Todo
 
 # 9. Invoicing
