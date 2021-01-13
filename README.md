@@ -341,7 +341,7 @@ curl --request GET \
 
 # 6. Refund Transaction
 
-Restricted
+Refunds are processed through our [support page](https://paycruiser.zendesk.com/hc/en-us/requests/new)
 
 # 7. Log Out
 
@@ -350,18 +350,92 @@ You just need to delete the Header token from the device. Without Header Token, 
 # 8. Reccuring Payments
 
 ## 8.1 Create Customer
-Todo
+This endpoints links a new customer with a merchant (e.g: You want to enroll a new client in order to store their credit card information and charge them on a reccuring basis. To achieve this, you'd first need to to create the customer record as indicated below)
+```
+curl --request POST \
+  --url https://sandbox-api.paycruiser.com/merchant/merchant-customers/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json' \
+  --data '{
+		"first_name": "Jane",
+		"last_name": "Doe",
+		"email": "janedoe@paycruiser.com",
+		"phone": "‭+15629992511‬",
+		"profession": "Student",
+		"notes": "",
+		"merchant": 1113
+}'
+```
+For more details regarding this endpoint, please visit our [online doc](https://api.paycruiser.com/swagger/#/merchant/merchant_merchant-customers_create)
+
 
 ## 8.2 Create/Save Customer Credit Card (for recurring Payments)
-Todo
+Once you have created the customer, now you can link a credit card information to the customer. Credit card will be encrypted using multiple encryption algorithms and store in an encrypted system as well. Once credit card saved, you will recveive the encrypted card number, which you can only use for this specific merchant on and exclusively PayCruiser.
+
+```
+curl --request POST \
+  --url https://sandbox-api.paycruiser.com/merchant/customer-credit-cards/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "card_number": "373953192351004",
+  "card_type": "American Express",
+  "cardholder_name": "Jane Doe",
+  "exp_date": "0724",
+  "cvv": "724",
+  "zip_code": "55116",
+  "card_owner": "901f95df-23d2-4f1d-bf7c-3dd3b7116946",
+  "authorized_merchant": 1113
+}'
+```
+
+For more information regarding this endpoint, please visit our [online documentation](https://api.paycruiser.com/swagger/#/merchant/merchant_customer-credit-cards_create)
 
 ## 8.3 Get Customer Information
-Todo
+This endpoint will provide you with your customers information saved (handy to, for instance, find a customer id, etc...)
+
+### Get List of Customers
+
+```
+curl --request GET \
+  --url https://sandbox-api.paycruiser.com/merchant/merchant-customers/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json'
+```
+
+### Get a Specific customer
+
+```
+curl --request GET \
+  --url https://sandbox-api.paycruiser.com/merchant/merchant-customers/71748772-9024-4ab2-8ebf-e1e3f0a96bf1/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json'
+```
+
+Please note, you have to pass the customer id in the url to retrieve specifc customer info.
+
 
 ## 8.4 Make Payment from saved Credit Card
-Todo
+This endpoint allows to charge customer card on file.
 
-# 9. Invoicing
-Todo
+```
+curl --request POST \
+  --url https://sandbox-api.paycruiser.com/merchant/customer-credit-cards/d3fd41fd-21f3-494a-8729-512815a1cfb9/charge/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"merchant_id": 1113,
+	"transaction_type": "purchase",
+	"method": "token",
+	"amount": "500", 
+	"currency_code": "USD",
+	"customer_id": "901f95df-23d2-4f1d-bf7c-3dd3b7116946",
+	"memo": "#43452"
+}
+'
+```
+Please note, you have to pass the credit card id in the url and the customer id in the url body.
+For more information regarding this endpoint, please visit our [online doc](https://api.paycruiser.com/swagger/#/merchant/merchant_customer-credit-cards_charge)
+
 
 
