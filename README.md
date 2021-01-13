@@ -439,3 +439,13 @@ For more information regarding this endpoint, please visit our [online doc](http
 
 
 
+## 8.5 Get Customer Card Information
+
+```
+curl --request GET \
+  --url https://sandbox-api.paycruiser.com/merchant/customer-credit-cards/103288e7-b95a-4342-bdce-0ddc595501b3/ \
+  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Content-Type: application/json'
+```
+
+For more information, please visit our [online documentation](https://api.paycruiser.com/swagger/#/merchant/merchant_customer-credit-cards_read)
