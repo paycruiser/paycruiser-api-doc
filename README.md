@@ -399,7 +399,7 @@ curl --request GET \
   "merchant_ref": "<Your merchant name or the merchant-name of your sub-merchant you are processing this transaction for>",
   "transaction_id":"ET128985", # This is resp_transaction_id
   "transaction_tag": "4650744783", # this is resp_transaction_tag
-  "transaction_type": "refund",
+  "transaction_type": "void", # "refund" if you would like to process refund instead. You can only void same day transactions
   "method": "credit_card",
   "amount": "100",
   "currency_code": "USD"
