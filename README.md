@@ -319,7 +319,7 @@ curl --request GET \
 }
 ```
 
-# 6. Refund Transaction
+# 6. Void Or Refund Transaction
  To process refunds, you need to 
  1. Have the *refund* feature enabled on your account. If this is not the case, please contact support at help@paycruiser.com and request activation
  2. Search the transaction you need to refund. Please note, you can only search by transaction_tag and transaction_id
