@@ -321,15 +321,18 @@ curl --request GET \
 
 # 6. Refund Transaction
  To process refunds, you need to 
- 1. Have the *refund* feature enabled on your account. If this is not the case, please contact support at help@paycruiser.com and request for activation of refunds on your account.
+ 1. Have the *refund* feature enabled on your account. If this is not the case, please contact support at help@paycruiser.com and request activation
  2. Search the transaction you need to refund. Please note, you can only search by transaction_tag and transaction_id
- *Request*
- ```curl --request GET \
+ 
+ ## Request
+ ```
+ curl --request GET \
   --url 'https://sandbox-api.paycruiser.com/merchant/paycruiser-transactions/?search=4650684582' \
   --header 'Authorization: Token <YOUR_TOKEN>'
  ```
  
- *Response*
+ ## Response
+ 
  ```
 {
   "count": 1,
@@ -381,9 +384,12 @@ curl --request GET \
   ]
 }
  ```
+ 
  3. Grab the values for keys(id,resp_transaction_id and resp_transaction_tag) of the transaction returned
  4. Process the refund
- *Request*
+ 5. 
+ ## Request
+ 
  ```
  curl --request POST \
   --url http://localhost/merchant/paycruiser-transactions/<id>/refund/ \
@@ -399,7 +405,9 @@ curl --request GET \
   "currency_code": "USD"
 }'
  ```
-  *Response*
+ 
+ ## Response
+ 
   ```
   {
   "correlation_id": "134.3004427469539",
