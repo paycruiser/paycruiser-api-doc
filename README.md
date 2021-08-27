@@ -387,7 +387,7 @@ curl --request GET \
  
  3. Grab the values for keys(id,resp_transaction_id and resp_transaction_tag) of the transaction returned
  4. Process the refund
- 5. 
+ 
  ## Request
  
  ```
