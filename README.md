@@ -15,7 +15,7 @@ User provides their cellphone number to receive onetime passcode
 curl --request POST \
   --url https://sandbox-api.paycruiser.com/auth/mobile/ \
   --header 'Content-Type: application/json' \
-  --data '{"mobile":"+15629992511"}'
+  --data '{"mobile":"<YOUR_MOBILE_NUMBER>"}'
 ```
 
 ### Response
@@ -28,7 +28,7 @@ curl --request POST \
 
 
 ## 1.b Token Authentications
-User inputs one time passcode to receive permanent API token
+User inputs one time passcode to receive long lived API token to store for subsequent requests
 
 ### Request
 ```
@@ -42,7 +42,7 @@ curl --request POST \
 
 ```
 {
-  "token": "7a7887e7c98723881757c9wq94d0ae4c0b406c0f"
+  "token": "<YOUR_TOKEN>"
 }
 ```
 
@@ -55,7 +55,7 @@ The header token is the token you received in the Token Authentication section
 ```
 curl --request GET \
   --url https://sandbox-api.paycruiser.com/user/acct-info/ \
-  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --header 'Authorization: Token <YOUR_TOKEN>' \
   --header 'Content-Type: application/json'
 ```
 
@@ -170,32 +170,36 @@ You should always display payment_status to UI.
 ```
 {
   "data": {
-    "fullName": "Jane Doe",
+    "fullName": "Ousmane Conde",
     "email": "",
     "cardnum": "4111111111111111",
     "cardtype": "visa",
-    "cardmonth": "11",
-    "cardyear": "22",
-    "cardcvc": "123",
+    "cardmonth": "12",
+    "cardyear": "23",
+    "cardcvc": "952",
     "promocode": "",
+    "currency_code": "usd",
     "product_id": 999,
     "unit_count": 1,
-    "unit_price": "50",
-    "zipcode": "90802",
+    "unit_price": "1",
+    "zipcode": "55116",
     "description": "",
     "memo": "",
-    "merchant_account": "PAYCRUISER-TEST",
-    "phone_number": "",
+    "merchant_account": "PAYCRUISER-SN",
+    "phone_number": "++15629992511",
     "tip": ""
   },
   "errors": [],
   "status_code": 250,
-  "payment_status": "SUCCESS!\n Payment received: 50.00 USD\n Confirmation Number: 145008\n",
+  "payment_status": "SUCCESS! Your payment of 1.00 USD was processed",
   "success_message": [
-    "SUCCESS!\n Payment received: 50.00 USD\n Confirmation Number: 145008\n",
-    "1 x 50 USD \nMemo:  \nTip: 0.00 USD \n "
+    "SUCCESS! Your payment of 1.00 USD was processed",
+    "Your confirmation Number: 171969",
+    "1 x 1 USD; Memo: mpos id: 1223; Tip: 0.00 USD"
   ],
-  "confirmation_code": "145008"
+  "confirmation_code": "171969",
+  "transaction_tag": "4650684582",
+  "transaction_id": "ET156323"
 }
 ```
 
@@ -206,8 +210,8 @@ Return the list of all merchant transactions and their status
 ## Request
 ```
 curl --request GET \
-  --url 'https://sandbox-api.paycruiser.com/me/transactions/?merchant_id=PAYCRUISER-TEST' \
-  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f'
+  --url 'https://sandbox-api.paycruiser.com/merchant/transactions/?merchant_id=PAYCRUISER-TEST' \
+  --header 'Authorization: Token <YOUR_TOKEN>'
 ```
 
 ## Response
@@ -268,31 +272,7 @@ curl --request GET \
       "payout_status_str": "Processed",
       "payout_record": null
     },
-    {
-      "id": "9a2ab131-c435-4d15-b435-53cd20aea916",
-      "is_paid_out": false,
-      "tag": "6015681570",
-      "cardholder_name": "DANIELA ST LOUIS",
-      "card_number": "7625 ***",
-      "card_type": "VISA",
-      "amount": "$16.54",
-      "transaction_type": "Purchase",
-      "status": "Approved",
-      "auth_no": "09044C",
-      "time": "11/28/2020 16:16:34",
-      "transaction_datetime": "2020-11-29T00:16:34",
-      "ref_num": "PAYCRUISER-TEST",
-      "cust_ref_num": "146066",
-      "reference_3": null,
-      "terminal_name": "PAYCRUISER",
-      "processing_fees": "0.930",
-      "processing_fees_str": "$ 0.930",
-      "payout_amount": "15.610",
-      "payout_amount_str": "$ 15.610",
-      "payout_status": 2,
-      "payout_status_str": "Processed",
-      "payout_record": null
-    }
+   ...
   ]
 }
 ```
@@ -304,8 +284,8 @@ Ruturns a single transaction details
 
 ```
 curl --request GET \
-  --url 'https://sandbox-api.paycruiser.com/me/transactions/dd914aea-720c-4ecb-8200-f8aaf46ce103/?merchant_id=PAYCRUISER' \
-  --header 'Authorization: Token 7a7887e7c98723881757c9wq94d0ae4c0b406c0f' \
+  --url 'https://sandbox-api.paycruiser.com/merchant/transactions/dd914aea-720c-4ecb-8200-f8aaf46ce103/?merchant_id=<YOUR-MERCHANT-ID>' \
+  --header 'Authorization: Token <YOUR_TOKEN>' \
   --header 'Content-Type: application/json'
 ```
 
@@ -340,8 +320,106 @@ curl --request GET \
 ```
 
 # 6. Refund Transaction
-
-Refunds are processed through our [support page](https://paycruiser.zendesk.com/hc/en-us/requests/new)
+ To process refunds, you need to 
+ 1. Have the *refund* feature enabled on your account. If this is not the case, please contact support at help@paycruiser.com and request for activation of refunds on your account.
+ 2. Search the transaction you need to refund. Please note, you can only search by transaction_tag and transaction_id
+ *Request*
+ ```curl --request GET \
+  --url 'https://sandbox-api.paycruiser.com/merchant/paycruiser-transactions/?search=4650684582' \
+  --header 'Authorization: Token <YOUR_TOKEN>'
+ ```
+ 
+ *Response*
+ ```
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": "c5dd75a3-506f-4b77-b4ec-78497b0cbe0d",
+      "created_at": "2021-08-27T05:56:13.360412Z",
+      "updated_on": "2021-08-27T05:56:13.379153Z",
+      "total_amount_in_cents": "100",
+      "total_amount_USD": "1.00",
+      "tip_amount": "0.00",
+      "tipped_user": null,
+      "card_type": "visa",
+      "card_number": "4111 ****",
+      "card_cvv": "9",
+      "card_expiry": "12",
+      "full_name": "Ousmane Conde",
+      "ref_customer": "163609",
+      "ref_merchant": "PayCruiser-SN",
+      "description": "1 x 1 USD; Memo: mpos id: 1223; Tip: 0.00 USD",
+      "memo": "mpos id: 1223",
+      "email": "",
+      "zipcode": "55116",
+      "unit_count": "1",
+      "promocode": "NONE",
+      "phone_number": "",
+      "resp_correlation_id": "134.3004377289767",
+      "resp_transaction_status": "approved",
+      "resp_validation_status": "success",
+      "resp_transaction_type": "purchase",
+      "resp_transaction_id": "ET128985",
+      "resp_transaction_tag": "4650744783",
+      "resp_method": "credit_card",
+      "resp_amount": "100",
+      "resp_currency": "USD",
+      "resp_cvv2": null,
+      "resp_card_type": "visa",
+      "resp_cardholder_name": "Ousmane Conde",
+      "resp_card_number": "1111",
+      "resp_exp_date": "1223",
+      "resp_bank_resp_code": "100",
+      "resp_bank_message": "Approved",
+      "resp_gateway_resp_code": "00",
+      "resp_gateway_message": "Transaction Normal",
+      "resp_error_msg": null
+    }
+  ]
+}
+ ```
+ 3. Grab the values for keys(id,resp_transaction_id and resp_transaction_tag) of the transaction returned
+ 4. Process the refund
+ *Request*
+ ```
+ curl --request POST \
+  --url http://localhost/merchant/paycruiser-transactions/<id>/refund/ \
+  --header 'Authorization: Token <YOUR_TOKEN>' \
+  --header 'Content-Type: application/json' \
+  --data '{
+  "merchant_ref": "<Your merchant name or the merchant-name of your sub-merchant you are processing this transaction for>",
+  "transaction_id":"ET128985", # This is resp_transaction_id
+  "transaction_tag": "4650744783", # this is resp_transaction_tag
+  "transaction_type": "refund",
+  "method": "credit_card",
+  "amount": "100",
+  "currency_code": "USD"
+}'
+ ```
+  *Response*
+  ```
+  {
+  "correlation_id": "134.3004427469539",
+  "transaction_status": "approved",
+  "validation_status": "success",
+  "transaction_type": "refund",
+  "transaction_id": "RETURN",
+  "transaction_tag": "4650747768",
+  "method": "credit_card",
+  "amount": "100",
+  "currency": "USD",
+  "bank_resp_code": "100",
+  "bank_message": "Approved",
+  "gateway_resp_code": "00",
+  "gateway_message": "Transaction Normal",
+  "retrieval_ref_no": "210826",
+  "tokenized_card_number": "7818177350131111",
+  "is_success": 1
+  }
+  ```
 
 # 7. Log Out
 
