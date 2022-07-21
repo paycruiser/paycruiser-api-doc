@@ -134,7 +134,7 @@ Use these following card numbers to test your sandbox integration. P.S: You cann
 | memo             | string | Transaction memo. Some clients use this for tracking purposes on Quickbooks                                                                | optional               |
 | merchant_account | string | Merchant account to who this transaction will be paid to                                                                                   | required               |
 | phone_number     | string | customer phone number to receive transaction receipts to                                                                                   | optional               |
-| api_key          | string | merchant's paycruiser API key                                                                                                              | required               |
+| api_key          | string | merchant's paycruiser API key                                                                                                              | required if not authenticated              |
 | tip              | string | dollar value to add to the final amount                                                                                                    | optional               |
 
 
