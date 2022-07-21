@@ -142,6 +142,7 @@ Use these following card numbers to test your sandbox integration. P.S: You cann
 ```
 curl --request POST \
   --url https://sandbox-api.paycruiser.com/pay/single-payment/ \
+  --header 'Authorization: Token <YOUR_TOKEN>
   --data '{
 	 "fullName":"Jane Doe",
 	 "email":"",
@@ -163,7 +164,7 @@ curl --request POST \
 }'
 ```
 
-### Request for non authenticated payments (recommended)
+### Request for non authenticated payments (not recommended)
 ```
 curl --request POST \
   --url https://sandbox-api.paycruiser.com/pay/ \
