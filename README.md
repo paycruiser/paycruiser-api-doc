@@ -138,7 +138,32 @@ Use these following card numbers to test your sandbox integration. P.S: You cann
 | tip              | string | dollar value to add to the final amount                                                                                                    | optional               |
 
 
-### Request
+### Request for authenticated payments (recommended)
+```
+curl --request POST \
+  --url https://sandbox-api.paycruiser.com/pay/single-payment/ \
+  --data '{
+	 "fullName":"Jane Doe",
+	 "email":"",
+	 "cardnum":"4111111111111111",
+	 "cardtype":"visa",
+	 "cardmonth":"11",
+	 "cardyear":"22",
+	 "cardcvc":"123",
+	 "promocode":"",
+	 "product_id":999,
+	 "unit_count":1,
+	 "unit_price":"50",
+	 "zipcode":"90802",
+	 "description":"",
+	 "memo":"",
+	 "merchant_account":"PAYCRUISER-TEST",
+	 "phone_number":"",
+	 "tip":""
+}'
+```
+
+### Request for non authenticated payments (recommended)
 ```
 curl --request POST \
   --url https://sandbox-api.paycruiser.com/pay/ \
